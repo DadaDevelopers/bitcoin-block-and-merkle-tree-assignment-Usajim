@@ -1,149 +1,61 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/a1G91hG4)
-# assignment-6
-
 # Bitcoin Block and Merkle Tree Assignment
+## Name: Mary 
+---
 
-## Assignment Overview
-
-This assignment will help you understand Bitcoin's block structure and Merkle tree construction through hands-on exploration and visualization.
+## Overview
+This assignment explores Bitcoin's block structure and Merkle tree construction
+through hands-on inspection of a real Bitcoin block using mempool.space.
 
 ---
 
 ## Task 1: Block Inspection
 
-### Instructions
+I inspected Bitcoin Block 948,362 using mempool.space blockchain explorer.
 
-Use a blockchain explorer to inspect a specific Bitcoin block:
+### Key Findings
+- Block Height    : 948,362
+- Block Hash      : 00000000000000000001459c54f32ad19259af8d4b75876ff1851a37d8f36136
+- Previous Hash   : 000000000000000000012fda74ca4615dc8fc0c01504cbb9276a39d961092c91
+- Merkle Root     : 9ff862e464b708f70ba9016b90d94ed8ab33ce8b9453cabdaf7f7dfa1939f791
+- Transactions    : 2,650
+- Timestamp       : 2026-05-07 23:33:52
+- Miner           : Foundry USA
 
-**Recommended Explorers:**
-- [mempool.space](https://mempool.space)
-- [blockchain.com](https://www.blockchain.com/explorer)
-
-### Requirements
-
-Find and document the following information for a specific block:
-
-1. **Block Height**: The position of the block in the blockchain
-2. **Block Hash**: The unique identifier of the block
-3. **Previous Block Hash**: The hash of the block that came before this one
-4. **Merkle Root**: The root hash of the Merkle tree containing all transactions
-
-### Submission Format
-
-Create a document with the following structure:
-
-```
-Block Inspection Results
-------------------------
-Block Height: [your answer]
-Block Hash: [your answer]
-Previous Block Hash: [your answer]
-Merkle Root: [your answer]
-Number of Transactions: [your answer]
-Timestamp: [your answer]
-```
+Full details in block-inspection.md
 
 ---
 
-## Task 2: Merkle Tree Visualization
+## Task 2: Merkle Tree Construction
 
-### Instructions
+I constructed a Merkle tree using 4 real transaction hashes from Block 948,362.
 
-Construct a Merkle tree from 4 example transaction hashes to demonstrate how the Merkle root is calculated.
+### The 4 Transactions Used
+- TxA (Coinbase): 8d5aba4db120f7c9dc586f4cc9125f9bd490d0a5cd97c4429007d849ecda08ee
+- TxB           : 4a2b9afb30627d910b47b9c01e7c3fe760387aba6a699f36238092cd5ae52e48
+- TxC           : ad584fa10b96946b30af9d42a9e999aa83a3305b74a6ffc8dd64030173a70931
+- TxD           : 9d49e4aca797c31554051273029cf06cc292929e9bee9555df35cc134f132886
 
-### Requirements
 
-1. **Choose 4 Transaction Hashes**
-   - You can use real transaction hashes from the block you inspected in Task 1
-   - Or create example hashes for demonstration purposes
+### How the Merkle Root is Calculated
+Step 1: Hash(AB) = SHA256(SHA256(TxA + TxB))
+Step 2: Hash(CD) = SHA256(SHA256(TxC + TxD))
+Step 3: Merkle Root = SHA256(SHA256(Hash(AB) + Hash(CD)))
 
-2. **Construct the Merkle Tree**
-   - Show the tree structure visually (diagram, ASCII art, or drawing)
-   - Label each level of the tree clearly
-   - Show the hashing process at each level
-
-3. **Calculate the Merkle Root**
-   - Document each step of the calculation
-   - Show how pairs of hashes are combined and re-hashed
-   - Verify that your final result matches the expected Merkle root
-
-### Expected Tree Structure
-
-```
-                    Merkle Root
-                        |
-            +-----------+-----------+
-            |                       |
-        Hash(AB)                Hash(CD)
-            |                       |
-        +---+---+               +---+---+
-        |       |               |       |
-      TxA     TxB             TxC     TxD
-```
-
-### Tools You Can Use
-
-- Pen and paper
-- Diagram tools (draw.io, Lucidchart, Excalidraw)
-- Code (Python, JavaScript, etc.)
-- ASCII art in your README
+See code/merkle_tree.py for the full Python implementation.
 
 ---
 
-## Submission Guidelines
+## Key Learnings
 
-### What to Submit
-
-1. A markdown file (`.md`) or PDF containing:
-   - Your block inspection findings (Task 1)
-   - Your Merkle tree visualization (Task 2)
-   - Explanation of your process and findings
-
-2. If you used code:
-   - Include your source code files
-   - Add comments explaining your logic
-
-### Submission Format
-
-Your submission should include:
-
-```
-📁 assignment-submission/
-├── README.md (your main report)
-├── block-inspection.md (Task 1 results)
-├── merkle-tree-diagram.png (or .pdf)
-└── code/ (optional, if you wrote code)
-    └── merkle_tree.py (or other files)
-```
+1. Blocks are linked via hashes — changing any block breaks the entire chain
+2. The Merkle root efficiently summarizes thousands of transactions in one hash
+3. Proof of work requires the block hash to start with many zeros
+4. Miners compete to find a nonce that produces a valid hash
+5. The coinbase transaction is always the first transaction in every block
 
 ---
 
-## Learning Objectives
-
-By completing this assignment, you will:
-
-- Understand the structure of a Bitcoin block
-- Learn how blocks are linked together via hashes
-- Visualize how Merkle trees efficiently prove transaction inclusion
-- Gain familiarity with blockchain explorers
-
----
-
-## Resources
-
-### Blockchain Explorers
-- [Mempool.space](https://mempool.space) - Clean UI, detailed information
-- [Blockchain.com](https://www.blockchain.com/explorer) - Classic explorer
-- [Blockstream.info](https://blockstream.info) - Technical details
-
-### Learning Resources
-- [Bitcoin Developer Guide - Block Chain](https://developer.bitcoin.org/devguide/block_chain.html)
-- [Merkle Trees Explained](https://www.investopedia.com/terms/m/merkle-tree.asp)
-- [How Bitcoin Works Under the Hood](https://www.youtube.com/watch?v=Lx9zgZCMqXE)
-
-### Optional Tools
-- [Online SHA-256 Calculator](https://emn178.github.io/online-tools/sha256.html)
-- [Python hashlib documentation](https://docs.python.org/3/library/hashlib.html)
-
-
-Good luck! 🚀
+## Files
+- README.md            : This main report
+- block-inspection.md  : Detailed Task 1 findings
+- code/merkle_tree.py  : Python Merkle tree implementation
