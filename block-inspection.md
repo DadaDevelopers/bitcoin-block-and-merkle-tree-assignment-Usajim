@@ -6,12 +6,12 @@
 ## Block Inspection Results
 
 Block Inspection Results
-Block Height          : 948,362
-Block Hash            : 00000000000000000001459c54f32ad19259af8d4b75876ff1851a37d8f36136
-Previous Block Hash   : 000000000000000000012fda74ca4615dc8fc0c01504cbb9276a39d961092c91
-Merkle Root           : 9ff862e464b708f70ba9016b90d94ed8ab33ce8b9453cabdaf7f7dfa1939f791
-Number of Transactions: 2,650
-Timestamp             : 2026-05-07 23:33:52
+- Block Height          : 948,362
+- Block Hash            : 00000000000000000001459c54f32ad19259af8d4b75876ff1851a37d8f36136
+- Previous Block Hash   : 000000000000000000012fda74ca4615dc8fc0c01504cbb9276a39d961092c91
+- Merkle Root           : 9ff862e464b708f70ba9016b90d94ed8ab33ce8b9453cabdaf7f7dfa1939f791
+- Number of Transactions: 2,650
+- Timestamp             : 2026-05-07 23:33:52
 
 
 ---
